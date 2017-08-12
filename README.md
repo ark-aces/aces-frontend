@@ -5,8 +5,8 @@ contracts by sending a payment transaction using the [Ark Wallet](https://github
 
 ## Development Stack
 
-- [Angular4 Webpack Starter](https://github.com/AngularClass/angular-starter)
-- [Angular 2 Framework](https://angular.io/)
+- [Angular 4 Webpack Starter](https://github.com/AngularClass/angular-starter)
+- [Angular 4 Framework](https://angular.io/)
 - [Bootstrap 3](http://getbootstrap.com/)
 - [Bootstrap 3 SB Admin 2 Theme](https://blackrockdigital.github.io/startbootstrap-sb-admin-2/)
 
