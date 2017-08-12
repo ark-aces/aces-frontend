@@ -1,46 +1,24 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ark Contract Execution Services (ACES)</title>
-  <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
-  <!-- base url -->
-  <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
-  <% if (webpackConfig.htmlElements.headTags) { %>
-  <!-- Configured Head Tags  -->
-  <%= webpackConfig.htmlElements.headTags %>
-  <% } %>
+  <base href="/">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <%= htmlWebpackPlugin.files.webpackManifest %>
-
-  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
-  <!-- Webpack Dev Server reload -->
-  <script src="/webpack-dev-server.js"></script>
-  <% } %>
-
-  <!-- Async Google Analytics: change UA-71073175-1 to be your site's ID -->
-  <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-71073175-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <script async src="https://www.google-analytics.com/analytics.js"></script>
-  <!-- End Google Analytics -->
-
-  <!-- CSS will be injected by webpack here -->
-  <!-- Preload link tags will be injected by webpack here -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.0/metisMenu.min.css">
+  <link rel="stylesheet" href="assets/vendor/sb-admin-2/css/sb-admin-2.min.css">
+  <link rel="stylesheet" href="assets/vendor/font-awesome-4.7.0/css/font-awesome.min.css">
 
 </head>
-
 <body>
+  <app-root></app-root>
 
-  <app>
-    Loading...
-  </app>
-
-  <!-- Scripts will be injected by webpack here -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.0/metisMenu.min.js"></script>
+  <script src="assets/vendor/sb-admin-2/js/sb-admin-2.min.js"></script>
 </body>
 </html>
