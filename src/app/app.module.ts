@@ -10,6 +10,8 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {EthTransferComponent} from './eth-transfer/eth-transfer.component';
 import {ViewEthContractDeployComponent} from './eth-contract-deploy/view-eth-contract-deploy.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ClipboardModule} from 'ngx-clipboard/dist';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import {ViewEthContractDeployComponent} from './eth-contract-deploy/view-eth-con
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
+    ClipboardModule,
     RouterModule.forRoot([
       { path: '',      component: AboutComponent },
       { path: 'about', component: AboutComponent },

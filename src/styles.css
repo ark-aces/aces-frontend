@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 .ng-valid[required], .ng-valid.required {
-    border-left: 5px solid green;
+    border-left: 5px solid #ddd;
 }
 
 .ng-invalid:not(form).ng-pristine {
-    border-left: 5px solid #555;
+    border-left: 5px solid #fce129;
 }
 
 .ng-invalid:not(form) {
@@ -28,4 +28,62 @@ h2 {
 
 .huge {
     font-size: 30px;
+}
+
+body {
+    background-color: #fff;
+}
+
+.copy-button {
+    margin-left: 5px;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited, .btn-primary:focus, .btn-primary:active:focus {
+    color: #fff;
+    background-color: #CA3317;
+    border-color: #912919;
+}
+
+.btn.active, .btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #CA3317;
+    border-color: #912919;
+}
+
+.btn-primary:hover {
+    background-color: #d53a16;
+    border-color: #912919;
+}
+
+#side-menu a {
+    color: #222;
+}
+#side-menu a:hover, #side-menu a:focus, #side-menu a:visited {
+    color: #555;
+}
+
+.navbar a {
+    color: #b63017;
+    text-decoration: none;
+}
+.navbar a:hover, .navbar a:focus, .navbar a:visited, .navbar a:active {
+    color: #de3217;
+}
+
+
+.panel-red>.panel-heading {
+    border-color: #912919;
+    color: #fff;
+    background-color: #CA3317;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:active,
+.navbar-default .navbar-brand:visited{
+    color: #CA3317;
+    font-weight: bold;
+}
+
+.form-control[readonly] {
+    background-color: #fff;
+    opacity: 1;
 }

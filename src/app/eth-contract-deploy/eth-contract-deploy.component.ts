@@ -2,6 +2,7 @@ import {
   Component
 } from '@angular/core';
 import {Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
 
 export class CreateEthContractForm {
   returnArkAddress: string;
@@ -40,19 +41,20 @@ export class EthContractResponse {
 export class EthContractDeployComponent {
 
   model = new CreateEthContractForm();
-
   submitted = false;
-
   contractResponse: EthContractResponse;
 
-  constructor(private router: Router) {}
-
+  constructor(private router: Router, private httpClient: HttpClient) {}
 
   onSubmit() {
     this.submitted = true;
 
-    console.log('submitted data');
-    console.log(JSON.stringify(this.model));
+    this.router.navigate(['eth-contract-deploy', '91u4981u24012']);
+
+    // this.httpClient.get<EthContractResponse>('https://aces-ark.io/contracts')
+    //   .subscribe(contractResponse => {
+    //     this.router.navigate(['eth-contract-deploy', contractResponse.token]);
+    //   });
 
     // todo: do actual http request to get contract response
     this.contractResponse = {
@@ -70,9 +72,6 @@ export class EthContractDeployComponent {
       estimatedEthCost: '4.000000',
       requiredArkCost: '4.0000'
     };
-
-    // redirect to contract page
-    this.router.navigate(['eth-contract-deploy', this.contractResponse.token]);
 
   }
 

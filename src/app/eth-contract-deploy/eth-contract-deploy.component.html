@@ -34,6 +34,13 @@
         </p>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!contractForm.form.valid">Submit Contract</button>
+    <button *ngIf="!submitted" type="submit" class="btn btn-primary">
+        Submit Contract
+    </button>
+
+    <button *ngIf="submitted" class="btn btn-default disabled">
+        <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+        Submitting...
+    </button>
 
 </form>
