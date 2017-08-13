@@ -37,10 +37,3 @@
     <button type="submit" class="btn btn-primary" [disabled]="!contractForm.form.valid">Submit Contract</button>
 
 </form>
-
-<div [hidden]="!submitted" style="margin-top: 4em">
-    <h2>Contract Created Successfully!</h2>
-
-    <a [routerLink]="['/view-eth-contract-deploy', contractResponse.token]">View Contract</a>
-</div>
-

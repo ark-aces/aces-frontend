@@ -1,6 +1,7 @@
 import {
   Component
 } from '@angular/core';
+import {Router} from '@angular/router';
 
 export class CreateEthContractForm {
   returnArkAddress: string;
@@ -33,7 +34,7 @@ export class EthContractResponse {
 }
 
 @Component({
-  selector: 'eth-contract-deploy',
+  selector: 'app-eth-contract-deploy',
   templateUrl: './eth-contract-deploy.component.html'
 })
 export class EthContractDeployComponent {
@@ -44,7 +45,12 @@ export class EthContractDeployComponent {
 
   contractResponse: EthContractResponse;
 
+  constructor(private router: Router) {}
+
+
   onSubmit() {
+    this.submitted = true;
+
     console.log('submitted data');
     console.log(JSON.stringify(this.model));
 
@@ -65,7 +71,9 @@ export class EthContractDeployComponent {
       requiredArkCost: '4.0000'
     };
 
-    this.submitted = true;
+    // redirect to contract page
+    this.router.navigate(['eth-contract-deploy', this.contractResponse.token]);
+
   }
 
 }
