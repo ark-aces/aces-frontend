@@ -1,0 +1,142 @@
+<h1>Ethereum Contract Deployment</h1>
+
+<div *ngIf="pending" class="panel panel-warning">
+    <div class="panel-heading">
+        Ark Transaction Payment Required
+    </div>
+    <div class="panel-body">
+        <p>Execute your contract by sending an Ark transaction using the Ark Wallet App.</p>
+
+        <p><strong>Service Ark Address:</strong><br />
+            {{ contract.serviceArkAddress }}</p>
+
+        <p><strong>Required Ark Amount:</strong><br />
+            {{ contract.requiredArkCost }}</p>
+
+        <p><strong>SmartBridge Text:</strong><br />
+            {{ contract.token }}</p>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-2">
+                <img class="img-responsive" src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data={{contract.token}}&amp;qzone=1&amp;margin=0&amp;size=140x140&amp;ecc=L" alt="qr code" />
+            </div>
+            <div class="col-xs-10">
+                <div class="huge">
+                    {{ contract.token }}<br />
+                    {{ contract.status }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-nonfluid">
+    <tr>
+        <th>Token</th>
+        <td>
+            {{ contract.token }}
+        </td>
+    </tr>
+    <tr>
+        <th>Created At</th>
+        <td>{{ contract.createdAt }}</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>{{ contract.status }}</td>
+    </tr>
+    <tr>
+        <th>Gas Limit</th>
+        <td>{{ contract.gasLimit }}</td>
+    </tr>
+    <tr>
+        <th>Ark Per Eth Exchange Rate</th>
+        <td>{{ contract.arkPerEthExchangeRate }}</td>
+    </tr>
+    <tr>
+        <th>Estimated Gas Cost</th>
+        <td>{{ contract.estimatedGasCost }}</td>
+    </tr>
+    <tr>
+        <th>Estimated Eth Cost</th>
+        <td>{{ contract.estimatedEthCost }}</td>
+    </tr>
+    <tr>
+        <th>Required Ark Cost</th>
+        <td>{{ contract.requiredArkCost }}</td>
+    </tr>
+</table>
+
+
+<h2>Ethereum Contract Data</h2>
+
+<table class="table table-nonfluid">
+    <tr>
+        <th>Contract Code</th>
+        <td><div class="data-block">{{ contract.contractCode }}</div></td>
+    </tr>
+    <tr>
+        <th>Contract ABI Json</th>
+        <td><div class="data-block">{{ contract.contractAbiJson }}</div></td>
+    </tr>
+    <tr>
+        <th>Contract Params Json</th>
+        <td><div class="data-block">{{ contract.contractParamsJson }}</div></td>
+    </tr>
+</table>
+
+
+<h2>Executed Ethereum Contract:</h2>
+
+<div *ngIf="!completed" class="alert alert-warning">
+    This contract has not been executed on the Ethereum blockchain at this time.
+    It may be waiting for you to send an Ark transaction payment or not yet been
+    processed by the service listener.
+</div>
+
+<div *ngIf="completed">
+    <table class="table table-nonfluid">
+        <tr>
+            <th>Deployment Ark Cost</th>
+            <td>{{ contract.deploymentArkCost }}</td>
+        </tr>
+        <tr>
+            <th>Contract Transaction Hash</th>
+            <td>{{ contract.contractTransactionHash }}
+                <a class="btn" href="https://etherscan.io/tx/{{ contract.contractTransactionHash }}">View</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<h2>Return Ark Transaction</h2>
+
+<div *ngIf="pending" class="alert alert-warning">
+    No return Ark transaction exists at this time.
+</div>
+
+<div *ngIf="!pending">
+    <table class="table table-nonfluid">
+        <tr>
+            <th>Return Ark Address</th>
+            <td>{{ contract.returnArkAddress }}
+                <a class="btn" href="https://explorer.ark.io/address/{{ contract.returnArkAddress }}">View</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Return Ark Amount</th>
+            <td>{{ contract.returnArkAmount }}</td>
+        </tr>
+        <tr>
+            <th>Return Ark Transaction Id</th>
+            <td>{{ contract.returnArkTransactionId }}
+                <a class="btn" href="https://explorer.ark.io/tx/{{ contract.returnArkTransactionId }}">View</a>
+            </td>
+        </tr>
+    </table>
+</div>

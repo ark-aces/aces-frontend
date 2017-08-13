@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+
+.ng-valid[required], .ng-valid.required {
+    border-left: 5px solid green;
+}
+
+.ng-invalid:not(form).ng-pristine {
+    border-left: 5px solid #555;
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid red;
+}
+
+
+.data-block {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+h2 {
+    margin-top: 1.5em;
+}
+
+.table-nonfluid {
+    width: auto !important;
+}
+
+.huge {
+    font-size: 30px;
+}
