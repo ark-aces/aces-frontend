@@ -15,6 +15,7 @@ import {ClipboardModule} from 'ngx-clipboard/dist';
 import {EthContractDeployService} from './eth-contract-deploy/aces-service/eth-contract-deploy.service';
 import {HttpEthContractDeployService} from './eth-contract-deploy/aces-service/http-eth-contract-deploy.service';
 import {StubEthContractDeployService} from './eth-contract-deploy/aces-service/stub-eth-contract-deploy.service';
+import {APP_BASE_HREF} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {StubEthContractDeployService} from './eth-contract-deploy/aces-service/s
     ])
   ],
   providers: [
+    {provide: APP_BASE_HREF, useValue : '/aces-app' },
     { provide: EthContractDeployService, useClass: StubEthContractDeployService }
   ],
   bootstrap: [AppComponent]
