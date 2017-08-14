@@ -25,7 +25,7 @@ export class ViewEthContractDeployComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routeParams = this.route.params.subscribe(params => {
       this.token = params['token'];
-      this.lastUpdated = new Date().toISOString().split('.')[0] + 'Z';
+      this.updateLastUpdated();
 
       this.ethContractDeployService.get(this.token).subscribe(contractResponse => {
         this.contract = contractResponse;
@@ -39,7 +39,7 @@ export class ViewEthContractDeployComponent implements OnInit, OnDestroy {
           this.pollingSubscription = IntervalObservable.create(1000)
             .subscribe(() => {
               this.ethContractDeployService.get(this.token).subscribe(updatedContractResponse => {
-                this.lastUpdated = new Date().toISOString().split('.')[0] + 'Z';
+                this.updateLastUpdated();
                 this.contract = updatedContractResponse;
                 if (this.contract.status === 'completed') {
                   this.completed = true;
@@ -51,6 +51,10 @@ export class ViewEthContractDeployComponent implements OnInit, OnDestroy {
         }
       });
     });
+  }
+
+  private updateLastUpdated() {
+    this.lastUpdated = new Date().toISOString().split('.')[0] + 'Z';
   }
 
   ngOnDestroy() {

@@ -48,7 +48,7 @@
         </p>
     </div>
 
-    <button *ngIf="!submitted" type="submit" class="btn btn-primary">
+    <button *ngIf="!submitted" [disabled]="!contractForm.form.valid" type="submit" class="btn btn-primary">
         Submit Contract
     </button>
 
