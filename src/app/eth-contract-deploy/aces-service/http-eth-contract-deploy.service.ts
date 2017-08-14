@@ -11,11 +11,11 @@ export class HttpEthContractDeployService extends EthContractDeployService {
   }
 
   create(createEthContractForm: CreateEthContractForm): Observable<EthContractResponse> {
-    return this.http.post('https://aces-ark.io/contracts', createEthContractForm);
+    return this.http.post('http://localhost:8080/contracts', createEthContractForm);
   }
 
   get(token: string): Observable<EthContractResponse> {
-    return this.http.get<EthContractResponse>('https://aces-ark.io/contracts/' + token);
+    return this.http.get<EthContractResponse>('http://localhost:8080/contracts/' + token);
   }
 
 }
