@@ -37,7 +37,7 @@
     <div class="form-group">
         <label for="paramsJson">Ethereum Contract Params Json</label>
         <input type="text" class="form-control" id="paramsJson" required
-               [(ngModel)]="model.abiJson" name="paramsJson" #paramsJson="ngModel">
+               [(ngModel)]="model.paramsJson" name="paramsJson" #paramsJson="ngModel">
         <div *ngIf="! paramsJson.pristine && paramsJson.invalid"
              class="alert alert-danger">
             Please enter a valid JSON string.
