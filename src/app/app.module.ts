@@ -43,7 +43,7 @@ import {APP_BASE_HREF} from '@angular/common';
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue : '/aces-app' },
-    { provide: EthContractDeployService, useClass: StubEthContractDeployService }
+    { provide: EthContractDeployService, useClass: HttpEthContractDeployService }
   ],
   bootstrap: [AppComponent]
 })
