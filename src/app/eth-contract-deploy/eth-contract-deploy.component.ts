@@ -15,6 +15,7 @@ export class EthContractDeployComponent {
 
   model = new CreateEthContractForm();
   submitted = false;
+  error = false;
 
   constructor(private router: Router, private ethContractDeployService: EthContractDeployService) {}
 
@@ -22,9 +23,16 @@ export class EthContractDeployComponent {
     this.submitted = true;
 
     this.ethContractDeployService.create(this.model)
-      .subscribe(contractResponse => {
-        this.router.navigate(['eth-contract-deploy', contractResponse.token]);
-      });
+      .subscribe(
+        contractResponse => {
+          this.router.navigate(['eth-contract-deploy', contractResponse.token]);
+        },
+        error => {
+          console.log(error);
+          this.error = true;
+          this.submitted = false;
+        }
+      );
   }
 
 }
