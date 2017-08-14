@@ -5,29 +5,43 @@
         <label for="returnArkAddress">Return Ark Address</label>
         <input type="text" class="form-control" id="returnArkAddress" required
                [(ngModel)]="model.returnArkAddress" name="returnArkAddress" #returnArkAddress="ngModel">
-        <div *ngIf="returnArkAddress.invalid && (returnArkAddress.dirty || returnArkAddress.touched)"
+        <div *ngIf="! returnArkAddress.pristine && returnArkAddress.invalid"
              class="alert alert-danger">
-            Return Ark Address is required
+            Please enter a valid address.
         </div>
-
         <p class="help-block">Enter your Ark wallet address to return any un-used amount to.</p>
     </div>
 
     <div class="form-group">
         <label for="abiJson">Ethereum Contract ABI Json</label>
-        <input type="text" class="form-control" id="abiJson" required>
+        <input type="text" class="form-control" id="abiJson" required
+            [(ngModel)]="model.abiJson" name="abiJson" #abiJson="ngModel">
+        <div *ngIf="! abiJson.pristine && abiJson.invalid"
+             class="alert alert-danger">
+            Please enter a valid JSON string.
+        </div>
         <p class="help-block">Enter API json data output by your solidity compiler.</p>
     </div>
 
     <div class="form-group">
-        <label for="abiJson">Ethereum Contract Code Hex Data</label>
-        <input type="text" class="form-control" id="code" required>
+        <label for="code">Ethereum Contract Code Hex Data</label>
+        <input type="text" class="form-control" id="code" required
+            [(ngModel)]="model.code" name="code" #code="ngModel">
+        <div *ngIf="! code.pristine && code.invalid"
+             class="alert alert-danger">
+            Please enter a valid contract code string.
+        </div>
         <p class="help-block">Enter compiled code data output by your solidity compiler.</p>
     </div>
 
     <div class="form-group">
         <label for="abiJson">Gas Limit</label>
-        <input type="text" class="form-control" id="gasLimit" required>
+        <input type="text" class="form-control" id="gasLimit" required
+            [(ngModel)]="model.gasLimit" name="gasLimit" #gasLimit="ngModel">
+        <div *ngIf="! gasLimit.pristine && gasLimit.invalid"
+             class="alert alert-danger">
+            Please enter a valid gas limit integer.
+        </div>
         <p class="help-block">Enter the maximum amount of gas that should be used when deploying your code contract.
             If the contract deployment runs out of gas, it will fail and un-used funds will be returned to
             the "Return Ark Address" entered above.

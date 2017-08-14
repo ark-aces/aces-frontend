@@ -12,6 +12,9 @@ import {EthTransferComponent} from './eth-transfer/eth-transfer.component';
 import {ViewEthContractDeployComponent} from './eth-contract-deploy/view-eth-contract-deploy.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ClipboardModule} from 'ngx-clipboard/dist';
+import {EthContractDeployService} from './eth-contract-deploy/aces-service/eth-contract-deploy.service';
+import {HttpEthContractDeployService} from './eth-contract-deploy/aces-service/http-eth-contract-deploy.service';
+import {StubEthContractDeployService} from './eth-contract-deploy/aces-service/stub-eth-contract-deploy.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import {ClipboardModule} from 'ngx-clipboard/dist';
       { path: '**',    component: NoContentComponent },
     ])
   ],
-  providers: [],
+  providers: [
+    { provide: EthContractDeployService, useClass: StubEthContractDeployService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
