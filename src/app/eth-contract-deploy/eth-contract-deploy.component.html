@@ -35,6 +35,17 @@
     </div>
 
     <div class="form-group">
+        <label for="paramsJson">Ethereum Contract Params Json</label>
+        <input type="text" class="form-control" id="paramsJson" required
+               [(ngModel)]="model.abiJson" name="paramsJson" #paramsJson="ngModel">
+        <div *ngIf="! paramsJson.pristine && paramsJson.invalid"
+             class="alert alert-danger">
+            Please enter a valid JSON string.
+        </div>
+        <p class="help-block">Enter params json data for your contract.</p>
+    </div>
+
+    <div class="form-group">
         <label for="abiJson">Gas Limit</label>
         <input type="text" class="form-control" id="gasLimit" required
             [(ngModel)]="model.gasLimit" name="gasLimit" #gasLimit="ngModel">

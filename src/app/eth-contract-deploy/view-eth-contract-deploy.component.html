@@ -5,16 +5,17 @@
         <div class="panel" [class.panel-yellow]="!completed" [class.panel-green]="completed">
             <div class="panel-heading">
                 <div class="huge">
-                    <strong>Token:</strong> {{ contract.token }}<br />
                     <strong>Status:</strong>
-
                     <span *ngIf="completed">
-                        Executed
+                        Contract Executed
                     </span>
                     <span *ngIf="!completed">
                         Listener running <i class="fa fa-gear fa-spin fa-fw"></i>
                     </span>
                     <br />
+
+                    <strong>Token:</strong> {{ contract.token }}<br />
+
                     <strong>Last Updated:</strong> {{ lastUpdated }}
                 </div>
             </div>
