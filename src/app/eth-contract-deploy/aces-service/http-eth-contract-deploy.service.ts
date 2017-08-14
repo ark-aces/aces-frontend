@@ -16,7 +16,7 @@ export class HttpEthContractDeployService extends EthContractDeployService {
     input.append('gasLimit', createEthContractForm.gasLimit.toString());
     input.append('abiJson', new Blob([createEthContractForm.abiJson], {type: 'text/plain'}));
     input.append('code', new Blob([createEthContractForm.code], {type: 'text/plain'}));
-    input.append('paramsJson', new Blob([createEthContractForm.paramsJson], {type: 'text/plain'}));
+    input.append('params', new Blob([createEthContractForm.paramsJson], {type: 'text/plain'}));
 
     return this.http.post('https://aces-ark.io/aces-api/contracts', input);
   }
