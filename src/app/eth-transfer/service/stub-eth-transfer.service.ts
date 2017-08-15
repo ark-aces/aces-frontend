@@ -1,0 +1,40 @@
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {CreateEthTransferForm, EthTransferService, EthTransferResponse} from './eth-transfer.service';
+import 'rxjs/add/observable/of';
+
+@Injectable()
+export class StubEthTransferService extends EthTransferService {
+
+  pendingContractResponseStub: EthTransferResponse = {
+    token: 'abe05cd7-40c2-4fb0-a4a7-8d2f76e74978',
+    createdAt: '2017-07-04T21:59:38.129Z',
+    status: 'pending',
+    returnArkAddress: 'AewU1vEmPrtQNjdVo33cX84bfovY3jNAkV',
+    recipientEthAddress: '0xdaa24d02bad7e9d6a80106db164bad9399a0423e',
+    ethAmount: '1.00',
+    serviceArkAddress: 'ARNJJruY6RcuYCXcwWsu4bx9kyZtntqeAx',
+    requiredArkAmount: '4.0000'
+  };
+
+  completedContractResponseStub: EthTransferResponse = {
+    token: 'abe05cd7-40c2-4fb0-a4a7-8d2f76e74978',
+    createdAt: '2017-07-04T21:59:38.129Z',
+    status: 'pending',
+    returnArkAddress: 'AewU1vEmPrtQNjdVo33cX84bfovY3jNAkV',
+    recipientEthAddress: '0xdaa24d02bad7e9d6a80106db164bad9399a0423e',
+    ethAmount: '1.00',
+    serviceArkAddress: 'ARNJJruY6RcuYCXcwWsu4bx9kyZtntqeAx',
+    requiredArkAmount: '4.0000',
+    ethTransactionHash: '49f55381c5c3c70f96d848df53ab7f9ae9881dbb8eb43e8f91f642018bf1258f'
+  };
+
+  create(createEthTransferForm: CreateEthTransferForm): Observable<EthTransferResponse> {
+    return Observable.of(this.pendingContractResponseStub);
+  }
+
+  get(token: string): Observable<EthTransferResponse> {
+    return Observable.of(this.completedContractResponseStub);
+  }
+
+}

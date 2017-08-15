@@ -16,14 +16,18 @@ import {EthContractDeployService} from './eth-contract-deploy/aces-service/eth-c
 import {HttpEthContractDeployService} from './eth-contract-deploy/aces-service/http-eth-contract-deploy.service';
 import {StubEthContractDeployService} from './eth-contract-deploy/aces-service/stub-eth-contract-deploy.service';
 import {APP_BASE_HREF} from '@angular/common';
+import {EthTransferService} from './eth-transfer/service/eth-transfer.service';
+import {StubEthTransferService} from './eth-transfer/service/stub-eth-transfer.service';
+import {ViewEthTransferComponent} from './eth-transfer/view-eth-transfer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     EthContractDeployComponent,
-    EthTransferComponent,
     ViewEthContractDeployComponent,
+    EthTransferComponent,
+    ViewEthTransferComponent,
     NoContentComponent
   ],
   imports: [
@@ -38,12 +42,14 @@ import {APP_BASE_HREF} from '@angular/common';
       { path: 'eth-contract-deploy', component: EthContractDeployComponent },
       { path: 'eth-contract-deploy/:token', component: ViewEthContractDeployComponent },
       { path: 'eth-transfer', component: EthTransferComponent },
+      { path: 'eth-transfer/:token', component: ViewEthTransferComponent },
       { path: '**',    component: NoContentComponent },
     ])
   ],
   providers: [
-    {provide: APP_BASE_HREF, useValue : '/aces-app' },
-    { provide: EthContractDeployService, useClass: HttpEthContractDeployService }
+    // {provide: APP_BASE_HREF, useValue : '/aces-app' },
+    { provide: EthContractDeployService, useClass: HttpEthContractDeployService },
+    { provide: EthTransferService, useClass: StubEthTransferService }
   ],
   bootstrap: [AppComponent]
 })
