@@ -3,6 +3,8 @@
 The Ark Contract Execution Service (ACES) App allows users to create Ethereum
 contracts by sending a payment transaction using the [Ark Wallet](https://github.com/ArkEcosystem/ark-desktop).
 
+![Screenshot](docs/screenshot.png)
+
 ## Development Stack
 
 - [Angular 4 Framework](https://angular.io/)
