@@ -22,7 +22,7 @@ export class EthTransferComponent {
     this.ethTransferService.create(this.model)
       .subscribe(
         contractResponse => {
-          this.router.navigate(['eth-transfer', contractResponse.token]);
+          this.router.navigate(['eth-transfer-contracts', contractResponse.token]);
         },
         error => {
           console.log(error);

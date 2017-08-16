@@ -38,16 +38,23 @@
           </li>
 
           <li>
-            <a [routerLink]=" ['./eth-contract-deploy'] "
+            <a [routerLink]=" ['./eth-transfer-contracts-create'] "
+               routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+              Ethereum Transfer
+            </a>
+          </li>
+
+          <li>
+            <a [routerLink]=" ['/eth-contract-deploy-contracts-create'] "
                routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
               Ethereum Contract Deployment
             </a>
           </li>
 
           <li>
-            <a [routerLink]=" ['./eth-transfer'] "
+            <a [routerLink]=" ['./test-contracts-create'] "
                routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-              Ethereum Transfer
+              Test Service
             </a>
           </li>
 

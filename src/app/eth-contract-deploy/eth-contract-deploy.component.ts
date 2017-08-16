@@ -25,7 +25,7 @@ export class EthContractDeployComponent {
     this.ethContractDeployService.create(this.model)
       .subscribe(
         contractResponse => {
-          this.router.navigate(['eth-contract-deploy', contractResponse.token]);
+          this.router.navigate(['eth-contract-deploy-contracts', contractResponse.token]);
         },
         error => {
           console.log(error);

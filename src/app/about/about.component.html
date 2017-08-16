@@ -5,8 +5,23 @@
 
 <h2>Available Services</h2>
 
-
 <div class="row">
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Ethereum Transfer</h4>
+            </div>
+            <div class="panel-body" style="height:200px">
+                <p>With this service, users are able to send a specified amount of Eth to a target Eth account
+                    using Ark.</p>
+                <p>
+                    <a class="btn btn-primary" [routerLink]=" ['/eth-transfer-contracts-create'] ">
+                        Transfer Ethereum
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -17,7 +32,7 @@
                     network using Ark. Users supply compiled solidity compiled contract code to the service and
                     pay for deployment using an Ark wallet.</p>
                 <p>
-                    <a class="btn btn-primary" [routerLink]=" ['/eth-contract-deploy'] ">
+                    <a class="btn btn-primary" [routerLink]=" ['/eth-contract-deploy-contracts-create'] ">
                         Deploy Ethereum Contract
                     </a>
                 </p>
@@ -27,20 +42,17 @@
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4>Ethereum Transfer</h4>
+                <h4>Test Service</h4>
             </div>
             <div class="panel-body" style="height:200px">
-                <p>With this service, users are able to send a specified amount of Eth to a target Eth account
-                    using Ark.</p>
+                <p>With this service, users are able to send a specified amount of Ark to the service and
+                    receive a return Ark transaction.</p>
                 <p>
-                    <a class="btn btn-primary" [routerLink]=" ['/eth-transfer'] ">
-                        Transfer Ethereum
+                    <a class="btn btn-primary" [routerLink]=" ['/test-contracts-create'] ">
+                        Run Test
                     </a>
                 </p>
             </div>
         </div>
-    </div>
-    <div class="col-lg-4">
-
     </div>
 </div>

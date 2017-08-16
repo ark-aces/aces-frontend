@@ -4,30 +4,30 @@ import {
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
-import {EthTransferService, EthTransferResponse} from './service/eth-transfer.service';
+import {TestService, TestContractResponse} from './service/test.service';
 
 @Component({
-  selector: 'app-view-eth-transfer-contract',
-  templateUrl: './view-eth-transfer.component.html'
+  selector: 'app-view-test-contract',
+  templateUrl: './view-test-contract.component.html'
 })
-export class ViewEthTransferComponent implements OnInit, OnDestroy {
+export class ViewTestContractComponent implements OnInit, OnDestroy {
 
   lastUpdated: String;
   completed = false;
   listening = false;
   routeParams: Subscription;
   token: string;
-  contract: EthTransferResponse;
+  contract: TestContractResponse;
   pollingSubscription: Subscription;
 
-  constructor(private EthTransferService: EthTransferService, private route: ActivatedRoute) {}
+  constructor(private testService: TestService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.routeParams = this.route.params.subscribe(params => {
       this.token = params['token'];
       this.updateLastUpdated();
 
-      this.EthTransferService.get(this.token).subscribe(contractResponse => {
+      this.testService.get(this.token).subscribe(contractResponse => {
         this.contract = contractResponse;
         if (contractResponse.status === 'completed') {
           this.completed = true;
@@ -38,7 +38,7 @@ export class ViewEthTransferComponent implements OnInit, OnDestroy {
           this.listening = true;
           this.pollingSubscription = IntervalObservable.create(1000)
             .subscribe(() => {
-              this.EthTransferService.get(this.token).subscribe(updatedContractResponse => {
+              this.testService.get(this.token).subscribe(updatedContractResponse => {
                 this.updateLastUpdated();
                 this.contract = updatedContractResponse;
                 if (this.contract.status === 'completed') {

@@ -19,6 +19,10 @@ import {APP_BASE_HREF} from '@angular/common';
 import {EthTransferService} from './eth-transfer/service/eth-transfer.service';
 import {StubEthTransferService} from './eth-transfer/service/stub-eth-transfer.service';
 import {ViewEthTransferComponent} from './eth-transfer/view-eth-transfer.component';
+import {CreateTestContractComponent} from './test-service/create-test-contract.component';
+import {ViewTestContractComponent} from './test-service/view-test-contract.component';
+import {TestService} from './test-service/service/test.service';
+import {StubTestService} from './test-service/service/stub-test.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,8 @@ import {ViewEthTransferComponent} from './eth-transfer/view-eth-transfer.compone
     ViewEthContractDeployComponent,
     EthTransferComponent,
     ViewEthTransferComponent,
+    CreateTestContractComponent,
+    ViewTestContractComponent,
     NoContentComponent
   ],
   imports: [
@@ -37,19 +43,22 @@ import {ViewEthTransferComponent} from './eth-transfer/view-eth-transfer.compone
     HttpClientModule,
     ClipboardModule,
     RouterModule.forRoot([
-      { path: '',      component: AboutComponent },
+      { path: '', component: AboutComponent },
       { path: 'about', component: AboutComponent },
-      { path: 'eth-contract-deploy', component: EthContractDeployComponent },
-      { path: 'eth-contract-deploy/:token', component: ViewEthContractDeployComponent },
-      { path: 'eth-transfer', component: EthTransferComponent },
-      { path: 'eth-transfer/:token', component: ViewEthTransferComponent },
-      { path: '**',    component: NoContentComponent },
+      { path: 'eth-contract-deploy-contracts-create', component: EthContractDeployComponent },
+      { path: 'eth-contract-deploy-contracts/:token', component: ViewEthContractDeployComponent },
+      { path: 'eth-transfer-contracts-create', component: EthTransferComponent },
+      { path: 'eth-transfer-contracts/:token', component: ViewEthTransferComponent },
+      { path: 'test-contracts-create', component: CreateTestContractComponent },
+      { path: 'test-contracts/:token', component: ViewTestContractComponent },
+      { path: '**', component: NoContentComponent },
     ])
   ],
   providers: [
     // {provide: APP_BASE_HREF, useValue : '/aces-app' },
     { provide: EthContractDeployService, useClass: HttpEthContractDeployService },
-    { provide: EthTransferService, useClass: StubEthTransferService }
+    { provide: EthTransferService, useClass: StubEthTransferService },
+    { provide: TestService, useClass: StubTestService }
   ],
   bootstrap: [AppComponent]
 })

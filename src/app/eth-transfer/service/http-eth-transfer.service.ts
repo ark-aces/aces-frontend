@@ -16,11 +16,11 @@ export class HttpEthTransferService extends EthTransferService {
     input.append('recipientEthAddress', createEthTransferForm.recipientEthAddress);
     input.append('ethAmount', createEthTransferForm.ethAmount);
 
-    return this.http.post('https://aces-ark.io/aces-api/eth-transfers', input);
+    return this.http.post('https://aces-ark.io/aces-api/eth-transfer-contracts', input);
   }
 
   get(token: string): Observable<EthTransferResponse> {
-    return this.http.get<EthTransferResponse>('https://aces-ark.io/aces-api/eth-transfers/' + token);
+    return this.http.get<EthTransferResponse>('https://aces-ark.io/aces-api/eth-transfer-contracts/' + token);
   }
 
 }
