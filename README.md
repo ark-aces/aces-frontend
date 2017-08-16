@@ -22,6 +22,6 @@ npm install
 npm start
 ```
 
-View the application in a web browser at: [http://localhost:3000/](http://localhost:3000/)
+View the application in a web browser at: [http://localhost:4200/](http://localhost:4200/)
 
 Have fun! 
