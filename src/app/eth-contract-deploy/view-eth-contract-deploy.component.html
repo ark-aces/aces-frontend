@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="col-xs-2">
-        <img class="img-responsive" src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data={{contract.token}}&amp;qzone=1&amp;margin=0&amp;size=140x140&amp;ecc=L" alt="qr code" />
+        <img class="img-responsive" src="https://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data={{contract.token}}&amp;qzone=1&amp;margin=0&amp;size=140x140&amp;ecc=L" alt="qr code" />
     </div>
 </div>
 
@@ -38,13 +38,13 @@
             {{ contract.serviceArkAddress }}
             <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.serviceArkAddress">Copy</a></p>
 
-        <p><strong>SmartBridge Text:</strong><br />
-            {{ contract.token }}
-            <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.token">Copy</a></p>
-
         <p><strong>Required Ark Amount:</strong><br />
             {{ contract.requiredArkCost }}
             <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.requiredArkCost">Copy</a></p>
+
+        <p><strong>SmartBridge Text:</strong><br />
+            {{ contract.token }}
+            <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.token">Copy</a></p>
     </div>
 </div>
 

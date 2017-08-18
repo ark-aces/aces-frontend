@@ -1,4 +1,4 @@
-<h1>Ethereum Transfer</h1>
+<h1>Ethereum Transfer Contract</h1>
 
 <div class="row">
     <div class="col-xs-10">
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="col-xs-2">
-        <img class="img-responsive" src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data={{contract.token}}&amp;qzone=1&amp;margin=0&amp;size=140x140&amp;ecc=L" alt="qr code" />
+        <img class="img-responsive" src="https://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data={{contract.token}}&amp;qzone=1&amp;margin=0&amp;size=140x140&amp;ecc=L" alt="qr code" />
     </div>
 </div>
 
@@ -38,13 +38,13 @@
             {{ contract.serviceArkAddress }}
             <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.serviceArkAddress">Copy</a></p>
 
-        <p><strong>SmartBridge Text:</strong><br />
-            {{ contract.token }}
-            <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.token">Copy</a></p>
-
         <p><strong>Required Ark Amount:</strong><br />
             {{ contract.requiredArkAmount }}
             <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.requiredArkAmount">Copy</a></p>
+
+        <p><strong>SmartBridge Text:</strong><br />
+            {{ contract.token }}
+            <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.token">Copy</a></p>
     </div>
 </div>
 
@@ -52,17 +52,6 @@
     This contract has not been executed on the Ethereum blockchain at this time.
     It may be waiting for you to send an Ark payment or not yet been
     processed by the service listener.
-</div>
-
-<div *ngIf="completed">
-    <table class="table">
-        <tr>
-            <th>Eth Transaction Hash</th>
-            <td>{{ contract.ethTransactionHash }}
-                <a class="btn btn-xs btn-default" href="https://etherscan.io/tx/{{ contract.ethTransactionHash }}">View</a>
-            </td>
-        </tr>
-    </table>
 </div>
 
 <div *ngIf="completed">
