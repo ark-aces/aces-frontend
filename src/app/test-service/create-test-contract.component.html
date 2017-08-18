@@ -12,10 +12,10 @@
     </div>
 
     <div class="form-group">
-        <label for="arkDonationAmount">Ark Donation Amount</label>
-        <input type="text" class="form-control" id="arkDonationAmount" required
-               [(ngModel)]="model.arkDonationAmount" name="arkDonationAmount" #arkDonationAmount="ngModel">
-        <div *ngIf="! arkDonationAmount.pristine && arkDonationAmount.invalid" class="alert alert-danger">
+        <label for="donationArkAmount">Ark Donation Amount</label>
+        <input type="text" class="form-control" id="donationArkAmount" required
+               [(ngModel)]="model.donationArkAmount" name="donationArkAmount" #donationArkAmount="ngModel">
+        <div *ngIf="! donationArkAmount.pristine && donationArkAmount.invalid" class="alert alert-danger">
             Please enter a valid ark amount.
         </div>
         <p class="help-block">Enter ark amount to donate. Ark sent in excess of this donation amount

@@ -15,7 +15,6 @@ import {ClipboardModule} from 'ngx-clipboard/dist';
 import {EthContractDeployService} from './eth-contract-deploy/aces-service/eth-contract-deploy.service';
 import {HttpEthContractDeployService} from './eth-contract-deploy/aces-service/http-eth-contract-deploy.service';
 import {StubEthContractDeployService} from './eth-contract-deploy/aces-service/stub-eth-contract-deploy.service';
-import {APP_BASE_HREF} from '@angular/common';
 import {EthTransferService} from './eth-transfer/service/eth-transfer.service';
 import {StubEthTransferService} from './eth-transfer/service/stub-eth-transfer.service';
 import {ViewEthTransferComponent} from './eth-transfer/view-eth-transfer.component';
@@ -23,6 +22,8 @@ import {CreateTestContractComponent} from './test-service/create-test-contract.c
 import {ViewTestContractComponent} from './test-service/view-test-contract.component';
 import {TestService} from './test-service/service/test.service';
 import {StubTestService} from './test-service/service/stub-test.service';
+import {HttpTestService} from './test-service/service/http-test.service';
+import {AcesServerConfig, LocalAcesServerConfig} from './aces-server-config';
 
 @NgModule({
   declarations: [
@@ -55,10 +56,10 @@ import {StubTestService} from './test-service/service/stub-test.service';
     ])
   ],
   providers: [
-    // {provide: APP_BASE_HREF, useValue : '/aces-app' },
+    { provide: AcesServerConfig, useClass: LocalAcesServerConfig },
     { provide: EthContractDeployService, useClass: HttpEthContractDeployService },
     { provide: EthTransferService, useClass: StubEthTransferService },
-    { provide: TestService, useClass: StubTestService }
+    { provide: TestService, useClass: HttpTestService }
   ],
   bootstrap: [AppComponent]
 })

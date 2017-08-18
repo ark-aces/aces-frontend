@@ -66,6 +66,17 @@
 </div>
 
 <div *ngIf="completed">
+    <table class="table">
+        <tr>
+            <th>Eth Transaction Hash</th>
+            <td>{{ contract.ethTransactionHash }}
+                <a class="btn btn-xs btn-default" href="https://rinkeby.etherscan.io/tx/{{ contract.ethTransactionHash }}">View</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="completed">
     <h2>Return Ark Transaction</h2>
     <table class="table">
         <tr>

@@ -49,20 +49,9 @@
 </div>
 
 <div *ngIf="!completed" class="alert alert-warning">
-    This contract has not been executed on the Ethereum blockchain at this time.
+    This contract has not been executed at this time.
     It may be waiting for you to send an Ark payment or not yet been
     processed by the service listener.
-</div>
-
-<div *ngIf="completed">
-    <table class="table">
-        <tr>
-            <th>Eth Transaction Hash</th>
-            <td>{{ contract.ethTransactionHash }}
-                <a class="btn btn-xs btn-default" href="https://etherscan.io/tx/{{ contract.ethTransactionHash }}">View</a>
-            </td>
-        </tr>
-    </table>
 </div>
 
 <div *ngIf="completed">
@@ -72,13 +61,7 @@
             <th>Return Ark Amount</th>
             <td>{{ contract.returnArkAmount }}</td>
         </tr>
-        <tr>
-            <th>Return Ark Address</th>
-            <td>{{ contract.returnArkAddress }}
-                <a class="btn btn-xs btn-default" href="https://explorer.ark.io/address/{{ contract.returnArkAddress }}">View</a>
-            </td>
-        </tr>
-        <tr>
+        <tr *ngIf="contract.returnArkTransactionId">
             <th>Return Ark Transaction Id</th>
             <td>{{ contract.returnArkTransactionId }}
                 <a class="btn btn-xs btn-default" href="https://explorer.ark.io/tx/{{ contract.returnArkTransactionId }}">View</a>
@@ -104,6 +87,12 @@
     <tr>
         <th>Status</th>
         <td>{{ contract.status }}</td>
+    </tr>
+    <tr>
+        <th>Return Ark Address</th>
+        <td>{{ contract.returnArkAddress }}
+            <a class="btn btn-xs btn-default" href="https://explorer.ark.io/address/{{ contract.returnArkAddress }}">View</a>
+        </td>
     </tr>
     <tr>
         <th>Donation Ark Amount</th>

@@ -2,24 +2,27 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {CreateTestContractForm, TestService, TestContractResponse} from './test.service';
+import {AcesServerConfig} from '../../aces-server-config';
 
 @Injectable()
 export class HttpTestService extends TestService {
 
-  constructor(private http: HttpClient) {
+  constructor(private acesServerConfig: AcesServerConfig, private http: HttpClient) {
     super();
   }
 
-  create(createEthTransferForm: CreateTestContractForm): Observable<TestContractResponse> {
-    const input = new FormData();
-    input.append('returnArkAddress', createEthTransferForm.returnArkAddress);
-    input.append('donationArkAmount', createEthTransferForm.donationArkAmount);
+  create(createTestContractForm: CreateTestContractForm): Observable<TestContractResponse> {
+    console.log('create: ' + JSON.stringify(createTestContractForm));
 
-    return this.http.post('https://aces-ark.io/aces-api/test-contracts', input);
+    const input = new FormData();
+    input.append('returnArkAddress', createTestContractForm.returnArkAddress);
+    input.append('donationArkAmount', createTestContractForm.donationArkAmount);
+
+    return this.http.post(this.acesServerConfig.getBaseUrl() + '/test-contracts', input);
   }
 
   get(token: string): Observable<TestContractResponse> {
-    return this.http.get<TestContractResponse>('https://aces-ark.io/aces-api/test-contracts/' + token);
+    return this.http.get<TestContractResponse>(this.acesServerConfig.getBaseUrl() + '/test-contracts/' + token);
   }
 
 }

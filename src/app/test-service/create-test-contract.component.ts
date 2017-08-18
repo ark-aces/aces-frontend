@@ -22,6 +22,7 @@ export class CreateTestContractComponent {
     this.testService.create(this.model)
       .subscribe(
         contractResponse => {
+          console.log(JSON.stringify(contractResponse));
           this.router.navigate(['test-contracts', contractResponse.token]);
         },
         error => {

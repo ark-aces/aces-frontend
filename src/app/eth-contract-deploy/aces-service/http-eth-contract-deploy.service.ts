@@ -2,11 +2,12 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {CreateEthContractForm, EthContractDeployService, EthContractResponse} from './eth-contract-deploy.service';
+import {AcesServerConfig} from '../../aces-server-config';
 
 @Injectable()
 export class HttpEthContractDeployService extends EthContractDeployService {
 
-  constructor(private http: HttpClient) {
+  constructor(private acesServerConfig: AcesServerConfig, private http: HttpClient) {
     super();
   }
 
@@ -18,11 +19,11 @@ export class HttpEthContractDeployService extends EthContractDeployService {
     input.append('code', new Blob([createEthContractForm.code], {type: 'text/plain'}));
     input.append('params', new Blob([createEthContractForm.paramsJson], {type: 'text/plain'}));
 
-    return this.http.post('https://aces-ark.io/aces-api/contracts', input);
+    return this.http.post(this.acesServerConfig.getBaseUrl() + '/contracts', input);
   }
 
   get(token: string): Observable<EthContractResponse> {
-    return this.http.get<EthContractResponse>('https://aces-ark.io/aces-api/contracts/' + token);
+    return this.http.get<EthContractResponse>(this.acesServerConfig.getBaseUrl() + '/contracts/' + token);
   }
 
 }
