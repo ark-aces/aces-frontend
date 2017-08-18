@@ -24,6 +24,7 @@ import {TestService} from './test-service/service/test.service';
 import {StubTestService} from './test-service/service/stub-test.service';
 import {HttpTestService} from './test-service/service/http-test.service';
 import {AcesServerConfig, LocalAcesServerConfig} from './aces-server-config';
+import {APP_BASE_HREF} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {AcesServerConfig, LocalAcesServerConfig} from './aces-server-config';
     ])
   ],
   providers: [
+    {provide: APP_BASE_HREF, useValue : '/aces-app' },
     { provide: AcesServerConfig, useClass: LocalAcesServerConfig },
     { provide: EthContractDeployService, useClass: HttpEthContractDeployService },
     { provide: EthTransferService, useClass: StubEthTransferService },
