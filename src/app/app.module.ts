@@ -23,8 +23,9 @@ import {ViewTestContractComponent} from './test-service/view-test-contract.compo
 import {TestService} from './test-service/service/test.service';
 import {StubTestService} from './test-service/service/stub-test.service';
 import {HttpTestService} from './test-service/service/http-test.service';
-import {AcesServerConfig, LocalAcesServerConfig} from './aces-server-config';
+import {AcesServerConfig, LocalAcesServerConfig, ProdAcesServerConfig} from './aces-server-config';
 import {APP_BASE_HREF} from '@angular/common';
+import {HttpEthTransferService} from './eth-transfer/service/http-eth-transfer.service';
 
 @NgModule({
   declarations: [
@@ -58,9 +59,9 @@ import {APP_BASE_HREF} from '@angular/common';
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue : '/aces-app' },
-    { provide: AcesServerConfig, useClass: LocalAcesServerConfig },
+    { provide: AcesServerConfig, useClass: ProdAcesServerConfig },
     { provide: EthContractDeployService, useClass: HttpEthContractDeployService },
-    { provide: EthTransferService, useClass: StubEthTransferService },
+    { provide: EthTransferService, useClass: HttpEthTransferService },
     { provide: TestService, useClass: HttpTestService }
   ],
   bootstrap: [AppComponent]
