@@ -87,3 +87,9 @@ body {
     background-color: #fff;
     opacity: 1;
 }
+
+.navbar-brand img.logo {
+    display: inline-block;
+    height: 24px;
+    margin-right:4px;
+}
