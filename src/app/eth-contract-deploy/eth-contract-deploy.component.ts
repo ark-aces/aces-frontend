@@ -1,23 +1,29 @@
 import {
-  Component
+  Component, OnInit
 } from '@angular/core';
 import {Router} from '@angular/router';
 import {
   CreateEthContractForm,
   EthContractDeployService,
 } from './aces-service/eth-contract-deploy.service';
+import {ServiceInfo} from '../common/service-info';
 
 @Component({
   selector: 'app-eth-contract-deploy',
   templateUrl: './eth-contract-deploy.component.html'
 })
-export class EthContractDeployComponent {
+export class EthContractDeployComponent implements OnInit {
 
+  serviceInfo: ServiceInfo;
   model = new CreateEthContractForm();
   submitted = false;
   error = false;
 
   constructor(private router: Router, private ethContractDeployService: EthContractDeployService) {}
+
+  ngOnInit() {
+    this.ethContractDeployService.getServiceInfo().subscribe(serviceInfo => this.serviceInfo = serviceInfo);
+  }
 
   onSubmit() {
     this.submitted = true;

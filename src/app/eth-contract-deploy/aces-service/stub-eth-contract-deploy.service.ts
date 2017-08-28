@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {CreateEthContractForm, EthContractDeployService, EthContractResponse} from './eth-contract-deploy.service';
 import 'rxjs/add/observable/of';
+import {ServiceInfo} from '../../common/service-info';
 
 @Injectable()
 export class StubEthContractDeployService extends EthContractDeployService {
@@ -43,6 +44,15 @@ export class StubEthContractDeployService extends EthContractDeployService {
     returnArkAmount: '2.00000000',
     returnArkTransactionId: '49f55381c5c3c70f96d848df53ab7f9ae9881dbb8eb43e8f91f642018bf1258f'
   };
+
+  getServiceInfo(): Observable<ServiceInfo> {
+    return Observable.of({
+       capacity: '100 Eth',
+       flatFeeArk: '1 Ark',
+       percentFee: '1.25%',
+       status: 'Up'
+     });
+  }
 
   create(createEthContractForm: CreateEthContractForm): Observable<EthContractResponse> {
     return Observable.of(this.pendingContractResponseStub);

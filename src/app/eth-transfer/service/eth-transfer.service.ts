@@ -1,4 +1,5 @@
 import {Observable} from 'rxjs/Observable';
+import {ServiceInfo} from '../../common/service-info';
 
 export class CreateEthTransferForm {
   returnArkAddress: string;
@@ -12,6 +13,7 @@ export class EthTransferResponse {
   status: string;
   returnArkAddress: string;
   recipientEthAddress: string;
+  arkPerEthExchangeRate: string;
   ethAmount: string;
   serviceArkAddress: string;
   requiredArkAmount: string;
@@ -19,6 +21,7 @@ export class EthTransferResponse {
 }
 
 export abstract class EthTransferService {
+  abstract getServiceInfo(): Observable<ServiceInfo>;
   abstract create(createEthTransferForm: CreateEthTransferForm): Observable<EthTransferResponse>;
   abstract get(token: string): Observable<EthTransferResponse>;
 }

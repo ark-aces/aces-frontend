@@ -1,20 +1,26 @@
 import {
-  Component
+  Component, OnInit
 } from '@angular/core';
 import {CreateTestContractForm, TestService} from './service/test.service';
 import {Router} from '@angular/router';
+import {ServiceInfo} from '../common/service-info';
 
 @Component({
   selector: 'app-create-test-contract',
   templateUrl: './create-test-contract.component.html'
 })
-export class CreateTestContractComponent {
+export class CreateTestContractComponent implements OnInit {
 
+  serviceInfo: ServiceInfo;
   model = new CreateTestContractForm();
   submitted = false;
   error = false;
 
   constructor(private router: Router, private testService: TestService) {}
+
+  ngOnInit() {
+    this.testService.getServiceInfo().subscribe(serviceInfo => this.serviceInfo = serviceInfo);
+  }
 
   onSubmit() {
     this.submitted = true;

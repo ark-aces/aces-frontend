@@ -1,4 +1,19 @@
-<h1>Ethereum Contract Deployment</h1>
+
+<h1>Ethereum Contract Deployment Service</h1>
+
+<p>With this service, users are able to deploy Ethereum code contracts directly to
+    the Ethereum network using Ark. Users supply compiled solidity contract code to the
+    service and pay for deployment using an Ark wallet.</p>
+
+<app-service-info
+        [capacity]='serviceInfo.capacity'
+        [flatFeeArk]='serviceInfo.flatFeeArk'
+        [percentFee]='serviceInfo.percentFee'
+        [status]='serviceInfo.status'></app-service-info>
+
+<app-eth-testnet-warning></app-eth-testnet-warning>
+
+<h2>Create Ethereum Contract Deployment Contract</h2>
 
 <form #contractForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">

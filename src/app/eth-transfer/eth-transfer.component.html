@@ -1,4 +1,18 @@
-<h1>Ethereum Transfer</h1>
+
+<h1>Ethereum Transfer Service</h1>
+
+<p>With this service, users are able to send a specified amount of Eth to a target Eth account
+    using Ark.</p>
+
+<app-service-info
+        [capacity]='serviceInfo.capacity'
+        [flatFeeArk]='serviceInfo.flatFeeArk'
+        [percentFee]='serviceInfo.percentFee'
+        [status]='serviceInfo.status'></app-service-info>
+
+<app-eth-testnet-warning></app-eth-testnet-warning>
+
+<h2>Create Ethereum Transfer Contract</h2>
 
 <form #contractForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -32,7 +46,7 @@
     </div>
 
     <button *ngIf="!submitted" [disabled]="!contractForm.form.valid" type="submit" class="btn btn-primary">
-        Submit Contract
+        Create Contract
     </button>
 
     <button *ngIf="submitted" class="btn btn-default disabled">

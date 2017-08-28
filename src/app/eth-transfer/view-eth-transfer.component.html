@@ -48,18 +48,12 @@
     </div>
 </div>
 
-<div *ngIf="!completed" class="alert alert-warning">
-    This contract has not been executed on the Ethereum blockchain at this time.
-    It may be waiting for you to send an Ark payment or not yet been
-    processed by the service listener.
-</div>
-
 <div *ngIf="completed">
     <table class="table">
         <tr>
             <th>Eth Transaction Hash</th>
             <td>{{ contract.ethTransactionHash }}
-                <a class="btn btn-xs btn-default" href="https://rinkeby.etherscan.io/tx/{{ contract.ethTransactionHash }}">View</a>
+                <a class="btn btn-xs btn-default" href="https://ropsten.etherscan.io/tx/{{ contract.ethTransactionHash }}">View</a>
             </td>
         </tr>
     </table>

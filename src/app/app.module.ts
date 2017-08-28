@@ -24,8 +24,10 @@ import {TestService} from './test-service/service/test.service';
 import {StubTestService} from './test-service/service/stub-test.service';
 import {HttpTestService} from './test-service/service/http-test.service';
 import {AcesServerConfig, LocalAcesServerConfig, ProdAcesServerConfig} from './aces-server-config';
-import {APP_BASE_HREF} from '@angular/common';
 import {HttpEthTransferService} from './eth-transfer/service/http-eth-transfer.service';
+import {EthTestnetWarningComponent} from './eth-testnet-warning/eth-testnet-warning.component';
+import {ModalModule} from 'ngx-bootstrap';
+import {ServiceInfoComponent} from './service-info/service-info.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import {HttpEthTransferService} from './eth-transfer/service/http-eth-transfer.s
     ViewEthTransferComponent,
     CreateTestContractComponent,
     ViewTestContractComponent,
-    NoContentComponent
+    NoContentComponent,
+    EthTestnetWarningComponent,
+    ServiceInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,7 @@ import {HttpEthTransferService} from './eth-transfer/service/http-eth-transfer.s
     HttpModule,
     HttpClientModule,
     ClipboardModule,
+    ModalModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: AboutComponent },
       { path: 'about', component: AboutComponent },
@@ -58,11 +63,11 @@ import {HttpEthTransferService} from './eth-transfer/service/http-eth-transfer.s
     ])
   ],
   providers: [
-    {provide: APP_BASE_HREF, useValue : '/aces-app' },
+    // {provide: APP_BASE_HREF, useValue : '/aces-app' },
     { provide: AcesServerConfig, useClass: ProdAcesServerConfig },
-    { provide: EthContractDeployService, useClass: HttpEthContractDeployService },
-    { provide: EthTransferService, useClass: HttpEthTransferService },
-    { provide: TestService, useClass: HttpTestService }
+    { provide: EthContractDeployService, useClass: StubEthContractDeployService },
+    { provide: EthTransferService, useClass: StubEthTransferService },
+    { provide: TestService, useClass: StubTestService }
   ],
   bootstrap: [AppComponent]
 })

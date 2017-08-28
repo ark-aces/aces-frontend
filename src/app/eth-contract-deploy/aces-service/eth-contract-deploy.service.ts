@@ -1,4 +1,5 @@
 import {Observable} from 'rxjs/Observable';
+import {ServiceInfo} from '../../common/service-info';
 
 export class CreateEthContractForm {
   returnArkAddress: string;
@@ -31,6 +32,7 @@ export class EthContractResponse {
 }
 
 export abstract class EthContractDeployService {
+  abstract getServiceInfo(): Observable<ServiceInfo>;
   abstract create(createEthContractForm: CreateEthContractForm): Observable<EthContractResponse>;
   abstract get(token: string): Observable<EthContractResponse>;
 }

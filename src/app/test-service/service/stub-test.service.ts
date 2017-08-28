@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {CreateTestContractForm, TestService, TestContractResponse} from './test.service';
 import 'rxjs/add/observable/of';
+import {ServiceInfo} from '../../common/service-info';
 
 @Injectable()
 export class StubTestService extends TestService {
@@ -27,6 +28,15 @@ export class StubTestService extends TestService {
     returnArkAmount: '1.000',
     returnArkTransactionId: '500224999259823996'
   };
+
+  getServiceInfo(): Observable<ServiceInfo> {
+    return Observable.of({
+      capacity: '100 Eth',
+      flatFeeArk: '1 Ark',
+      percentFee: '1.25%',
+      status: 'Up'
+    });
+  }
 
   create(createTestContractForm: CreateTestContractForm): Observable<TestContractResponse> {
     return Observable.of(this.pendingContractResponseStub);

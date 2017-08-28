@@ -48,12 +48,6 @@
     </div>
 </div>
 
-<div *ngIf="!completed" class="alert alert-warning">
-    This contract has not been executed on the Ethereum blockchain at this time.
-    It may be waiting for you to send an Ark payment or not yet been
-    processed by the service listener.
-</div>
-
 <div *ngIf="completed">
     <table class="table">
         <tr>
@@ -64,13 +58,13 @@
             <th>Contract Address</th>
             <td>{{ contract.contractAddress }}
                 <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.contractAddress">Copy</a>
-                <a class="btn btn-xs btn-default" href="https://rinkeby.etherscan.io/address/{{ contract.contractAddress }}">View</a>
+                <a class="btn btn-xs btn-default" href="https://ropsten.etherscan.io/address/{{ contract.contractAddress }}">View</a>
             </td>
         </tr>
         <tr>
             <th>Contract Transaction Hash</th>
             <td>{{ contract.contractTransactionHash }}
-                <a class="btn btn-xs btn-default" href="https://rinkeby.etherscan.io/tx/{{ contract.contractTransactionHash }}">View</a>
+                <a class="btn btn-xs btn-default" href="https://ropsten.etherscan.io/tx/{{ contract.contractTransactionHash }}">View</a>
             </td>
         </tr>
     </table>

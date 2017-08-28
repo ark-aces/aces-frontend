@@ -1,4 +1,5 @@
 import {Observable} from 'rxjs/Observable';
+import {ServiceInfo} from '../../common/service-info';
 
 export class CreateTestContractForm {
   returnArkAddress: string;
@@ -18,6 +19,7 @@ export class TestContractResponse {
 }
 
 export abstract class TestService {
+  abstract getServiceInfo(): Observable<ServiceInfo>;
   abstract create(form: CreateTestContractForm): Observable<TestContractResponse>;
   abstract get(token: string): Observable<TestContractResponse>;
 }
