@@ -23,8 +23,8 @@ export class EthTransferComponent implements OnInit {
     this.ethTransferService.getServiceInfo().subscribe(serviceInfo => {
       this.serviceInfo = {
         capacity: serviceInfo.capacity,
-        flatFeeArk: Number(serviceInfo.flatFeeArk).toString(),
-        percentFee: Number(serviceInfo.percentFee).toString(),
+        flatFeeArk: Number(serviceInfo.flatFeeArk).toString() + ' Ark',
+        percentFee: Number(serviceInfo.percentFee).toString() + '%',
         status: serviceInfo.status
       };
       this.loading = false;

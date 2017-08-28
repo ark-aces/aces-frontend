@@ -28,8 +28,8 @@ export class EthContractDeployComponent implements OnInit {
       .subscribe(serviceInfo => {
         this.serviceInfo = {
           capacity: serviceInfo.capacity,
-          flatFeeArk: Number(serviceInfo.flatFeeArk).toString(),
-          percentFee: Number(serviceInfo.percentFee).toString(),
+          flatFeeArk: Number(serviceInfo.flatFeeArk).toString() + ' Ark',
+          percentFee: Number(serviceInfo.percentFee).toString() + '%',
           status: serviceInfo.status
         };
         this.serviceInfoLoading = false;

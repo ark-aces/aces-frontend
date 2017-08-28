@@ -23,7 +23,7 @@ export class CreateTestContractComponent implements OnInit {
     this.testService.getServiceInfo().subscribe(serviceInfo => {
       this.serviceInfo = {
         capacity: serviceInfo.capacity,
-        flatFeeArk: Number(serviceInfo.flatFeeArk).toString(),
+        flatFeeArk: Number(serviceInfo.flatFeeArk).toString() + ' Ark',
         percentFee: Number(serviceInfo.percentFee).toString(),
         status: serviceInfo.status
       };
