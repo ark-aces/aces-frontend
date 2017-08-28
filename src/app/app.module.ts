@@ -28,6 +28,7 @@ import {HttpEthTransferService} from './eth-transfer/service/http-eth-transfer.s
 import {EthTestnetWarningComponent} from './eth-testnet-warning/eth-testnet-warning.component';
 import {ModalModule} from 'ngx-bootstrap';
 import {ServiceInfoComponent} from './service-info/service-info.component';
+import {PageLoadingComponent} from './page-loading.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {ServiceInfoComponent} from './service-info/service-info.component';
     ViewTestContractComponent,
     NoContentComponent,
     EthTestnetWarningComponent,
-    ServiceInfoComponent
+    ServiceInfoComponent,
+    PageLoadingComponent
   ],
   imports: [
     BrowserModule,

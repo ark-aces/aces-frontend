@@ -1,61 +1,65 @@
+<app-page-loading *ngIf="loading"></app-page-loading>
 
-<h1>Ethereum Transfer Service</h1>
+<div *ngIf="!loading">
+    <h1>Ethereum Transfer Service</h1>
 
-<p>With this service, users are able to send a specified amount of Eth to a target Eth account
-    using Ark.</p>
+    <p>With this service, users are able to send a specified amount of Eth to a target Eth account
+        using Ark.</p>
 
-<app-service-info
-        [isLoading]='serviceInfoLoading'
-        [capacity]='serviceInfo.capacity'
-        [flatFeeArk]='serviceInfo.flatFeeArk'
-        [percentFee]='serviceInfo.percentFee'
-        [status]='serviceInfo.status'></app-service-info>
+    <app-service-info
+            [isLoading]='serviceInfoLoading'
+            [capacity]='serviceInfo.capacity'
+            [flatFeeArk]='serviceInfo.flatFeeArk'
+            [percentFee]='serviceInfo.percentFee'
+            [status]='serviceInfo.status'></app-service-info>
 
-<app-eth-testnet-warning></app-eth-testnet-warning>
+    <app-eth-testnet-warning></app-eth-testnet-warning>
 
-<h2>Create Ethereum Transfer Contract</h2>
+    <h2>Create Ethereum Transfer Contract</h2>
 
-<form #contractForm="ngForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="returnArkAddress">Return Ark Address</label>
-        <input type="text" class="form-control" id="returnArkAddress" required
-               [(ngModel)]="model.returnArkAddress" name="returnArkAddress" #returnArkAddress="ngModel">
-        <div *ngIf="! returnArkAddress.pristine && returnArkAddress.invalid" class="alert alert-danger">
-            Please enter a valid address.
+    <form #contractForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="returnArkAddress">Return Ark Address</label>
+            <input type="text" class="form-control" id="returnArkAddress" required
+                   [(ngModel)]="model.returnArkAddress" name="returnArkAddress" #returnArkAddress="ngModel">
+            <div *ngIf="! returnArkAddress.pristine && returnArkAddress.invalid" class="alert alert-danger">
+                Please enter a valid address.
+            </div>
+            <p class="help-block">Enter your Ark wallet address to return any un-used amount to.</p>
         </div>
-        <p class="help-block">Enter your Ark wallet address to return any un-used amount to.</p>
-    </div>
 
-    <div class="form-group">
-        <label for="recipientEthAddress">Recipient Eth Address</label>
-        <input type="text" class="form-control" id="recipientEthAddress" required
-               [(ngModel)]="model.recipientEthAddress" name="recipientEthAddress" #recipientEthAddress="ngModel">
-        <div *ngIf="! recipientEthAddress.pristine && recipientEthAddress.invalid" class="alert alert-danger">
-            Please enter a valid eth address.
+        <div class="form-group">
+            <label for="recipientEthAddress">Recipient Eth Address</label>
+            <input type="text" class="form-control" id="recipientEthAddress" required
+                   [(ngModel)]="model.recipientEthAddress" name="recipientEthAddress" #recipientEthAddress="ngModel">
+            <div *ngIf="! recipientEthAddress.pristine && recipientEthAddress.invalid" class="alert alert-danger">
+                Please enter a valid eth address.
+            </div>
+            <p class="help-block">Enter recipient Eth wallet address.</p>
         </div>
-        <p class="help-block">Enter recipient Eth wallet address.</p>
-    </div>
 
-    <div class="form-group">
-        <label for="ethAmount">Eth Amount</label>
-        <input type="text" class="form-control" id="ethAmount" required
-               [(ngModel)]="model.ethAmount" name="ethAmount" #ethAmount="ngModel">
-        <div *ngIf="! ethAmount.pristine && ethAmount.invalid" class="alert alert-danger">
-            Please enter a valid number.
+        <div class="form-group">
+            <label for="ethAmount">Eth Amount</label>
+            <input type="text" class="form-control" id="ethAmount" required
+                   [(ngModel)]="model.ethAmount" name="ethAmount" #ethAmount="ngModel">
+            <div *ngIf="! ethAmount.pristine && ethAmount.invalid" class="alert alert-danger">
+                Please enter a valid number.
+            </div>
+            <p class="help-block">Enter eth amount to send.</p>
         </div>
-        <p class="help-block">Enter eth amount to send.</p>
-    </div>
 
-    <button *ngIf="!submitted" [disabled]="!contractForm.form.valid" type="submit" class="btn btn-primary">
-        Create Contract
-    </button>
+        <button *ngIf="!submitted" [disabled]="!contractForm.form.valid" type="submit" class="btn btn-primary">
+            Create Contract
+        </button>
 
-    <button *ngIf="submitted" class="btn btn-default disabled">
-        <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
-        Submitting...
-    </button>
+        <button *ngIf="submitted" class="btn btn-default disabled">
+            <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+            Submitting...
+        </button>
 
-    <div *ngIf="error" class="alert alert-danger">
-        <strong>Error Occurred!</strong> An error occurred submitting your contract, please try again later.
-    </div>
-</form>
+        <div *ngIf="error" class="alert alert-danger">
+            <strong>Error Occurred!</strong> An error occurred submitting your contract, please try again later.
+        </div>
+    </form>
+
+</div>

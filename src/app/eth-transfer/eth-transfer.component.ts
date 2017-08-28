@@ -11,7 +11,7 @@ import {ServiceInfo} from '../common/service-info';
 })
 export class EthTransferComponent implements OnInit {
 
-  serviceInfoLoading = true;
+  loading = true;
   serviceInfo: ServiceInfo;
   model = new CreateEthTransferForm();
   submitted = false;
@@ -21,8 +21,13 @@ export class EthTransferComponent implements OnInit {
 
   ngOnInit(): void {
     this.ethTransferService.getServiceInfo().subscribe(serviceInfo => {
-      this.serviceInfo = serviceInfo;
-      setTimeout(() => this.serviceInfoLoading = false, 1000);
+      this.serviceInfo = {
+        capacity: serviceInfo.capacity,
+        flatFeeArk: Number(serviceInfo.flatFeeArk).toString(),
+        percentFee: Number(serviceInfo.percentFee).toString(),
+        status: serviceInfo.status
+      };
+      this.loading = false;
     });
   }
 
