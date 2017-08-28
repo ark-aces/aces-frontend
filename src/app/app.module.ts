@@ -63,10 +63,9 @@ import {ServiceInfoComponent} from './service-info/service-info.component';
     ])
   ],
   providers: [
-    // {provide: APP_BASE_HREF, useValue : '/aces-app' },
     { provide: AcesServerConfig, useClass: ProdAcesServerConfig },
-    { provide: EthContractDeployService, useClass: StubEthContractDeployService },
-    { provide: EthTransferService, useClass: StubEthTransferService },
+    { provide: EthContractDeployService, useClass: HttpEthContractDeployService },
+    { provide: EthTransferService, useClass: HttpEthTransferService },
     { provide: TestService, useClass: HttpTestService }
   ],
   bootstrap: [AppComponent]
