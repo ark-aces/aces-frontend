@@ -67,7 +67,7 @@ import {ServiceInfoComponent} from './service-info/service-info.component';
     { provide: AcesServerConfig, useClass: ProdAcesServerConfig },
     { provide: EthContractDeployService, useClass: StubEthContractDeployService },
     { provide: EthTransferService, useClass: StubEthTransferService },
-    { provide: TestService, useClass: StubTestService }
+    { provide: TestService, useClass: HttpTestService }
   ],
   bootstrap: [AppComponent]
 })

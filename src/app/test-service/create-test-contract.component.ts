@@ -11,6 +11,7 @@ import {ServiceInfo} from '../common/service-info';
 })
 export class CreateTestContractComponent implements OnInit {
 
+  serviceInfoLoading = true;
   serviceInfo: ServiceInfo;
   model = new CreateTestContractForm();
   submitted = false;
@@ -19,7 +20,10 @@ export class CreateTestContractComponent implements OnInit {
   constructor(private router: Router, private testService: TestService) {}
 
   ngOnInit() {
-    this.testService.getServiceInfo().subscribe(serviceInfo => this.serviceInfo = serviceInfo);
+    this.testService.getServiceInfo().subscribe(serviceInfo => {
+      this.serviceInfo = serviceInfo;
+      setTimeout(() => this.serviceInfoLoading = false, 1000);
+    });
   }
 
   onSubmit() {

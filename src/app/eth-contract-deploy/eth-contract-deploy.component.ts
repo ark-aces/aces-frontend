@@ -14,6 +14,7 @@ import {ServiceInfo} from '../common/service-info';
 })
 export class EthContractDeployComponent implements OnInit {
 
+  serviceInfoLoading = true;
   serviceInfo: ServiceInfo;
   model = new CreateEthContractForm();
   submitted = false;
@@ -22,7 +23,10 @@ export class EthContractDeployComponent implements OnInit {
   constructor(private router: Router, private ethContractDeployService: EthContractDeployService) {}
 
   ngOnInit() {
-    this.ethContractDeployService.getServiceInfo().subscribe(serviceInfo => this.serviceInfo = serviceInfo);
+    this.ethContractDeployService.getServiceInfo().subscribe(serviceInfo => {
+      this.serviceInfo = serviceInfo;
+      setTimeout(() => this.serviceInfoLoading = false, 1000);
+    });
   }
 
   onSubmit() {

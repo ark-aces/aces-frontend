@@ -7,7 +7,10 @@
                         <i class="fa fa-bolt fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">{{capacity}}</div>
+                        <div [hidden]="!isLoading" class="huge">
+                            <i class="fa fa-spinner fa-spin fa-fw"></i>
+                        </div>
+                        <div [hidden]="isLoading" class="huge">{{capacity}}</div>
                         <div>Service Capacity</div>
                     </div>
                 </div>
@@ -22,7 +25,10 @@
                         <i class="fa fa-bank fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">{{flatFeeArk}}</div>
+                        <div [hidden]="!isLoading" class="huge">
+                            <i class="fa fa-spinner fa-spin fa-fw"></i>
+                        </div>
+                        <div  [hidden]="isLoading" class="huge">{{flatFeeArk}}</div>
                         <div>Flat Fee</div>
                     </div>
                 </div>
@@ -37,7 +43,10 @@
                         <i class="fa fa-bank fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">{{percentFee}}</div>
+                        <div [hidden]="!isLoading" class="huge">
+                            <i class="fa fa-spinner fa-spin fa-fw"></i>
+                        </div>
+                        <div [hidden]="isLoading" class="huge">{{percentFee}}</div>
                         <div>Percent Fee</div>
                     </div>
                 </div>
@@ -52,7 +61,10 @@
                         <i class="fa fa-heartbeat fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">{{status}}</div>
+                        <div [hidden]="!isLoading" class="huge">
+                            <i class="fa fa-spinner fa-spin fa-fw"></i>
+                        </div>
+                        <div [hidden]="isLoading" class="huge">{{status}}</div>
                         <div>Service Status</div>
                     </div>
                 </div>

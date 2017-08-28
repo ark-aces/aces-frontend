@@ -6,6 +6,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./service-info.component.css']
 })
 export class ServiceInfoComponent {
+  @Input() isLoading = true;
   @Input() capacity: string;
   @Input() flatFeeArk: string;
   @Input() percentFee: string;

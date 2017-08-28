@@ -6,6 +6,7 @@
     service and pay for deployment using an Ark wallet.</p>
 
 <app-service-info
+        [isLoading]='serviceInfoLoading'
         [capacity]='serviceInfo.capacity'
         [flatFeeArk]='serviceInfo.flatFeeArk'
         [percentFee]='serviceInfo.percentFee'
