@@ -106,3 +106,8 @@ body {
 #wrapper {
     padding-bottom: 4em;
 }
+
+code {
+    color: #000;
+    background-color: #f4f4f4;
+}
