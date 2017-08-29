@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
         This service is configured to use the
             <a href="https://ropsten.etherscan.io">Ethereum Testnet (ropsten) 
                 <i class="fa fa-external-link"></i></a>.
-            The Ark-Eth rate is 1/100 the real rate for Testnet transactions.
+            The Ark-Eth rate used is 1/100 the real rate.
     </div>
   `
 })
