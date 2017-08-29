@@ -7,6 +7,19 @@
         the Ethereum network using Ark. Users supply compiled solidity contract code to the
         service and pay for deployment using an Ark wallet.</p>
 
+    <p>Ethereum contract code and ABI interface can be obtained by compiling solidity code.
+        If you are new to ethereum smart contracts, you can use the
+        <a target="_blank" href="https://remix.ethereum.org">Remix Solidity Web Compiler
+            <i class="fa fa-external-link"></i></a> to obtain the required values for this service:
+    </p>
+
+    <ul>
+        <li>Enter the desired solidity code in the IDE editor window.</li>
+        <li>Choose "Contract details (bytecode, interface etc.)" to expand compiled information.</li>
+        <li>Copy bytecode and ABI interface JSON into the inputs below.</li>
+        <li>If contract has constructor parameters, enter them below in a JSON array.</li>
+    </ul>
+
     <app-service-info
             [isLoading]='serviceInfoLoading'
             [capacity]='serviceInfo.capacity'
@@ -15,6 +28,7 @@
             [status]='serviceInfo.status'></app-service-info>
 
     <app-eth-testnet-warning></app-eth-testnet-warning>
+
 
     <h2>Create Ethereum Contract Deployment Contract</h2>
 
@@ -31,7 +45,7 @@
         </div>
 
         <div class="form-group">
-            <label for="abiJson">Ethereum Contract ABI Json</label>
+            <label for="abiJson">Ethereum Contract ABI Json (Interface)</label>
             <input type="text" class="form-control" id="abiJson" required
                    [(ngModel)]="model.abiJson" name="abiJson" #abiJson="ngModel">
             <div *ngIf="! abiJson.pristine && abiJson.invalid"
@@ -42,7 +56,7 @@
         </div>
 
         <div class="form-group">
-            <label for="code">Ethereum Contract Code Hex Data</label>
+            <label for="code">Ethereum Contract Code (Bytecode)</label>
             <input type="text" class="form-control" id="code" required
                    [(ngModel)]="model.code" name="code" #code="ngModel">
             <div *ngIf="! code.pristine && code.invalid"
@@ -60,7 +74,7 @@
                  class="alert alert-danger">
                 Please enter a valid JSON string.
             </div>
-            <p class="help-block">Enter params json data for your contract.</p>
+            <p class="help-block">Enter params to your contract as a json array. Example: <code>["Param 1", "Param 2"]</code></p>
         </div>
 
         <div class="form-group">
@@ -72,8 +86,8 @@
                 Please enter a valid gas limit integer.
             </div>
             <p class="help-block">Enter the maximum amount of gas that should be used when deploying your code contract.
-                If the contract deployment runs out of gas, it will fail and un-used funds will be returned to
-                the "Return Ark Address" entered above.
+                If the contract deployment runs out of gas, it will fail. You should run a gas estimator to find
+                out the deployment cost of your ethereum contract.
             </p>
         </div>
 
