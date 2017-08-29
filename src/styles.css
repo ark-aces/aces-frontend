@@ -102,3 +102,7 @@ body {
     -o-transition: opacity 0.15s linear;
     transition: opacity 0.15s linear;
 }
+
+#wrapper {
+    padding-bottom: 4em;
+}
