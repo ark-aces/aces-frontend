@@ -20,6 +20,9 @@ export class StubEthContractDeployService extends EthContractDeployService {
     arkPerEthExchangeRate: '1.0',
     estimatedGasCost: 214411,
     estimatedEthCost: '4.000000',
+    arkFlatFee: '0',
+    arkFeePercent: '0',
+    arkFeeTotal: '0',
     requiredArkCost: '4.0000'
   };
 
@@ -41,6 +44,9 @@ export class StubEthContractDeployService extends EthContractDeployService {
     contractTransactionHash: '500224999259823996',
     contractAddress: '0xdaa24d02bad7e9d6a80106db164bad9399a0423e',
     gasUsed: 214411,
+    arkFlatFee: '0',
+    arkFeePercent: '0',
+    arkFeeTotal: '0',
     returnArkAmount: '2.00000000',
     returnArkTransactionId: '49f55381c5c3c70f96d848df53ab7f9ae9881dbb8eb43e8f91f642018bf1258f'
   };

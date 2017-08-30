@@ -22,6 +22,9 @@ export class EthContractResponse {
   arkPerEthExchangeRate: string;
   estimatedGasCost: number;
   estimatedEthCost: string;
+  arkFlatFee: string;
+  arkFeePercent: string;
+  arkFeeTotal: string;
   requiredArkCost: string;
   deploymentArkCost?: string;
   contractTransactionHash?: string;

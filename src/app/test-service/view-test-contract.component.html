@@ -1,100 +1,111 @@
-<h1>Test Contract</h1>
+<app-page-loading *ngIf="loading"></app-page-loading>
 
-<div class="row">
-    <div class="col-xs-10">
-        <div class="panel" [class.panel-yellow]="!completed" [class.panel-green]="completed">
-            <div class="panel-heading">
-                <div class="huge">
-                    <strong>Status:</strong>
-                    <span *ngIf="completed">
+<div *ngIf="!loading">
+    <h1>Test Contract</h1>
+
+    <div class="row">
+        <div class="col-xs-10">
+            <div class="panel" [class.panel-yellow]="!(completed || failed || rejected)"
+                 [class.panel-green]="completed"
+                 [class.panel-red]="failed || rejected">
+                <div class="panel-heading">
+                    <div class="huge">
+                        <strong>Status:</strong>
+                        <span *ngIf="completed">
                         Contract Executed
                     </span>
-                    <span *ngIf="!completed">
+                        <span *ngIf="failed">
+                        Contract Failed
+                    </span>
+                        <span *ngIf="rejected">
+                        Contract Rejected
+                    </span>
+                        <span *ngIf="!(completed || rejected || failed)">
                         Listener running <i class="fa fa-gear fa-spin fa-fw"></i>
                     </span>
-                    <br />
+                        <br />
 
-                    <strong>Token:</strong> {{ contract.token }}<br />
+                        <strong>Token:</strong> {{ contract.token }}<br />
 
-                    <strong>Last Updated:</strong> {{ lastUpdated }}
+                        <strong>Last Updated:</strong> {{ lastUpdated }}
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="col-xs-2">
+            <img class="img-responsive" src="https://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data={{contract.token}}&amp;qzone=1&amp;margin=0&amp;size=140x140&amp;ecc=L" alt="qr code" />
+        </div>
     </div>
-    <div class="col-xs-2">
-        <img class="img-responsive" src="https://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data={{contract.token}}&amp;qzone=1&amp;margin=0&amp;size=140x140&amp;ecc=L" alt="qr code" />
+
+    <div *ngIf="!(completed || failed || rejected)" class="panel panel-red">
+        <div class="panel-heading">
+            Ark Payment Required
+        </div>
+        <div class="panel-body">
+            <p>Execute your contract by sending an Ark transaction of the required amount to the Service Ark Address,
+                including the SmartBridge Text to identify this contract:</p>
+
+            <p><strong>Service Ark Address:</strong><br />
+                {{ contract.serviceArkAddress }}
+                <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.serviceArkAddress">Copy</a></p>
+
+            <p><strong>Required Ark Amount:</strong><br />
+                {{ contract.requiredArkAmount }}
+                <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.requiredArkAmount">Copy</a></p>
+
+            <p><strong>SmartBridge Text:</strong><br />
+                {{ contract.token }}
+                <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.token">Copy</a></p>
+        </div>
     </div>
-</div>
 
-<div *ngIf="!completed" class="panel panel-red">
-    <div class="panel-heading">
-        Ark Payment Required
+    <div *ngIf="completed || failed || rejected">
+        <h2>Return Ark Transaction</h2>
+        <table class="table">
+            <tr>
+                <th>Return Ark Amount</th>
+                <td>{{ contract.returnArkAmount }}</td>
+            </tr>
+            <tr *ngIf="contract.returnArkTransactionId">
+                <th>Return Ark Transaction Id</th>
+                <td>{{ contract.returnArkTransactionId }}
+                    <a class="btn btn-xs btn-default" href="https://explorer.ark.io/tx/{{ contract.returnArkTransactionId }}">View</a>
+                </td>
+            </tr>
+        </table>
     </div>
-    <div class="panel-body">
-        <p>Execute your contract by sending an Ark transaction of the required amount to the Service Ark Address,
-            including the SmartBridge Text to identify this contract:</p>
 
-        <p><strong>Service Ark Address:</strong><br />
-            {{ contract.serviceArkAddress }}
-            <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.serviceArkAddress">Copy</a></p>
 
-        <p><strong>Required Ark Amount:</strong><br />
-            {{ contract.requiredArkAmount }}
-            <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.requiredArkAmount">Copy</a></p>
+    <h2>Test Contract Data</h2>
 
-        <p><strong>SmartBridge Text:</strong><br />
-            {{ contract.token }}
-            <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.token">Copy</a></p>
-    </div>
-</div>
-
-<div *ngIf="completed">
-    <h2>Return Ark Transaction</h2>
     <table class="table">
         <tr>
-            <th>Return Ark Amount</th>
-            <td>{{ contract.returnArkAmount }}</td>
-        </tr>
-        <tr *ngIf="contract.returnArkTransactionId">
-            <th>Return Ark Transaction Id</th>
-            <td>{{ contract.returnArkTransactionId }}
-                <a class="btn btn-xs btn-default" href="https://explorer.ark.io/tx/{{ contract.returnArkTransactionId }}">View</a>
+            <th>Token</th>
+            <td>
+                {{ contract.token }}
             </td>
+        </tr>
+        <tr>
+            <th>Created At</th>
+            <td>{{ contract.createdAt }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ contract.status }}</td>
+        </tr>
+        <tr>
+            <th>Return Ark Address</th>
+            <td>{{ contract.returnArkAddress }}
+                <a class="btn btn-xs btn-default" href="https://explorer.ark.io/address/{{ contract.returnArkAddress }}">View</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Donation Ark Amount</th>
+            <td>{{ contract.donationArkAmount }}</td>
+        </tr>
+        <tr>
+            <th>Required Ark Cost</th>
+            <td>{{ contract.requiredArkAmount }}</td>
         </tr>
     </table>
 </div>
-
-
-<h2>Test Contract Data</h2>
-
-<table class="table">
-    <tr>
-        <th>Token</th>
-        <td>
-            {{ contract.token }}
-        </td>
-    </tr>
-    <tr>
-        <th>Created At</th>
-        <td>{{ contract.createdAt }}</td>
-    </tr>
-    <tr>
-        <th>Status</th>
-        <td>{{ contract.status }}</td>
-    </tr>
-    <tr>
-        <th>Return Ark Address</th>
-        <td>{{ contract.returnArkAddress }}
-            <a class="btn btn-xs btn-default" href="https://explorer.ark.io/address/{{ contract.returnArkAddress }}">View</a>
-        </td>
-    </tr>
-    <tr>
-        <th>Donation Ark Amount</th>
-        <td>{{ contract.donationArkAmount }}</td>
-    </tr>
-    <tr>
-        <th>Required Ark Cost</th>
-        <td>{{ contract.requiredArkAmount }}</td>
-    </tr>
-</table>
-

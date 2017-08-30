@@ -16,6 +16,9 @@ export class EthTransferResponse {
   arkPerEthExchangeRate: string;
   ethAmount: string;
   serviceArkAddress: string;
+  arkFlatFee: string;
+  arkFeePercent: string;
+  arkFeeTotal: string;
   requiredArkAmount: string;
   ethTransactionHash?: string;
 }
