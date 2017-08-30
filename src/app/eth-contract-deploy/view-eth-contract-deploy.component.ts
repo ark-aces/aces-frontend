@@ -12,8 +12,11 @@ import {EthContractDeployService, EthContractResponse} from './aces-service/eth-
 })
 export class ViewEthContractDeployComponent implements OnInit, OnDestroy {
 
+  loading = true;
   lastUpdated: String;
   completed = false;
+  failed = false;
+  rejected = false;
   listening = false;
   routeParams: Subscription;
   token: string;
@@ -31,9 +34,11 @@ export class ViewEthContractDeployComponent implements OnInit, OnDestroy {
         this.contract = contractResponse;
         if (contractResponse.status === 'completed') {
           this.completed = true;
-        }
-
-        if (contractResponse.status === 'pending') {
+        } else if (contractResponse.status === 'rejected') {
+          this.rejected = true;
+        } else if (contractResponse.status === 'failed') {
+          this.failed = true;
+        } else if (contractResponse.status === 'pending') {
           // poll contract data very second
           this.listening = true;
           this.pollingSubscription = IntervalObservable.create(1000)
@@ -41,14 +46,23 @@ export class ViewEthContractDeployComponent implements OnInit, OnDestroy {
               this.ethContractDeployService.get(this.token).subscribe(updatedContractResponse => {
                 this.updateLastUpdated();
                 this.contract = updatedContractResponse;
-                if (this.contract.status === 'completed') {
-                  this.completed = true;
+                if (this.contract.status !== 'pending') {
+                  if (updatedContractResponse.status === 'completed') {
+                    this.completed = true;
+                  }
+                  if (updatedContractResponse.status === 'rejected') {
+                    this.rejected = true;
+                  }
+                  if (updatedContractResponse.status === 'failed') {
+                    this.failed = true;
+                  }
                   this.pollingSubscription.unsubscribe();
                   this.listening = false;
                 }
               });
             });
         }
+        this.loading = false;
       });
     });
   }
