@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 import {EthTransferService, EthTransferResponse} from './service/eth-transfer.service';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-view-eth-transfer-contract',
@@ -12,6 +13,7 @@ import {EthTransferService, EthTransferResponse} from './service/eth-transfer.se
 })
 export class ViewEthTransferComponent implements OnInit, OnDestroy {
 
+  environment = environment;
   loading = true;
   lastUpdated: String;
   completed = false;

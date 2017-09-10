@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 import {EthContractDeployService, EthContractResponse} from './aces-service/eth-contract-deploy.service';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-view-eth-contract-deploy',
@@ -12,6 +13,7 @@ import {EthContractDeployService, EthContractResponse} from './aces-service/eth-
 })
 export class ViewEthContractDeployComponent implements OnInit, OnDestroy {
 
+  environment = environment;
   loading = true;
   lastUpdated: String;
   completed = false;

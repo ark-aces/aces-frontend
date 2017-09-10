@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 import {TestService, TestContractResponse} from './service/test.service';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-view-test-contract',
@@ -12,6 +13,7 @@ import {TestService, TestContractResponse} from './service/test.service';
 })
 export class ViewTestContractComponent implements OnInit, OnDestroy {
 
+  environment = environment;
   loading = true;
   lastUpdated: String;
   completed = false;

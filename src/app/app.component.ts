@@ -1,5 +1,6 @@
 import {Component, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 export class AppComponent {
 
   public modalRef: BsModalRef;
+  public environment = environment;
 
   constructor(private modalService: BsModalService) {}
 

@@ -65,17 +65,18 @@
                 <th>Deployment Ark Cost</th>
                 <td>{{ contract.deploymentArkCost }}</td>
             </tr>
+
             <tr *ngIf="contract.contractAddress">
                 <th>Contract Address</th>
                 <td>{{ contract.contractAddress }}
                     <a class="btn btn-xs btn-default copy-button" ngxClipboard [cbContent]="contract.contractAddress">Copy</a>
-                    <a class="btn btn-xs btn-default" href="https://ropsten.etherscan.io/address/{{ contract.contractAddress }}">View</a>
+                    <a class="btn btn-xs btn-default" href="{{ environment.etherscanBaseUrl }}/address/{{ contract.contractAddress }}">View</a>
                 </td>
             </tr>
             <tr>
                 <th>Contract Transaction Hash</th>
                 <td>{{ contract.contractTransactionHash }}
-                    <a class="btn btn-xs btn-default" href="https://ropsten.etherscan.io/tx/{{ contract.contractTransactionHash }}">View</a>
+                    <a class="btn btn-xs btn-default" href="{{ environment.etherscanBaseUrl }}/tx/{{ contract.contractTransactionHash }}">View</a>
                 </td>
             </tr>
         </table>
@@ -91,13 +92,13 @@
             <tr>
                 <th>Return Ark Address</th>
                 <td>{{ contract.returnArkAddress }}
-                    <a class="btn btn-xs btn-default" href="https://explorer.ark.io/address/{{ contract.returnArkAddress }}">View</a>
+                    <a class="btn btn-xs btn-default" href="{{ environment.arkExplorerBaseUrl }}/address/{{ contract.returnArkAddress }}">View</a>
                 </td>
             </tr>
             <tr>
                 <th>Return Ark Transaction Id</th>
                 <td>{{ contract.returnArkTransactionId }}
-                    <a class="btn btn-xs btn-default" href="https://explorer.ark.io/tx/{{ contract.returnArkTransactionId }}">View</a>
+                    <a class="btn btn-xs btn-default" href="{{ environment.arkExplorerBaseUrl }}/tx/{{ contract.returnArkTransactionId }}">View</a>
                 </td>
             </tr>
         </table>

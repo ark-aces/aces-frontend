@@ -4,5 +4,12 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  title: 'Ark Contract Execution Services (ACES)',
+  isEthTestnet: true,
+  ethNetworkName: 'ropsten',
+  etherscanBaseUrl: 'https://ropsten.etherscan.io',
+  ethArkRateFraction: '1/100',
+  arkExplorerBaseUrl: 'https://explorer.ark.io',
+  acesApiBaseUrl: 'http://localhost:8080'
 };

@@ -41,3 +41,6 @@ yarn-error.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# ignore configuration overrides
+/src/environments/environment.custom.ts

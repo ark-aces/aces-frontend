@@ -23,7 +23,6 @@ import {ViewTestContractComponent} from './test-service/view-test-contract.compo
 import {TestService} from './test-service/service/test.service';
 import {StubTestService} from './test-service/service/stub-test.service';
 import {HttpTestService} from './test-service/service/http-test.service';
-import {AcesServerConfig, LocalAcesServerConfig, ProdAcesServerConfig} from './aces-server-config';
 import {HttpEthTransferService} from './eth-transfer/service/http-eth-transfer.service';
 import {EthTestnetWarningComponent} from './eth-testnet-warning/eth-testnet-warning.component';
 import {ModalModule} from 'ngx-bootstrap';
@@ -65,7 +64,6 @@ import {PageLoadingComponent} from './page-loading.component';
     ])
   ],
   providers: [
-    { provide: AcesServerConfig, useClass: ProdAcesServerConfig },
     { provide: EthContractDeployService, useClass: HttpEthContractDeployService },
     { provide: EthTransferService, useClass: HttpEthTransferService },
     { provide: TestService, useClass: HttpTestService }
